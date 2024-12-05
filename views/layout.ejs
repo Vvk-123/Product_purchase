@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <!-- <link rel="stylesheet" href="/style.css" /> -->
+      <script src="https://kit.fontawesome.com/23fdcc5528.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style2.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <% if (!user) { %>
+        <a href="/api/auth/login">Login</a>
+        <a href="/api/auth/register">Register</a>
+        <% } else if (user.role==='admin' ) { %>
+        <span>Welcome, <%= user.name %></span>
+        <a href="/api/cart">Cart</a>
+        <a href="/api/auth/check-role">Role</a>
+        <a href="/api/auth/admin">Admin</a>
+        <!-- <a href="/api/products/add">Add Products</a> -->
+        <!-- Visible only to admin -->
+        <a href="/api/auth/logout">Logout</a>
+        <% } else { %>
+        <span>Welcome, <%= user.name %></span>
+        <a href="/api/cart">Cart</a>
+        <a href="/api/auth/check-role">Role</a>
+        <a href="/api/auth/logout">Logout</a>
+        <% } %>
+      </nav>
+    </header>
+
+    <main><%- body %></main>
+
+    <footer>
+      <!-- <p>© 2024 E-Commerce</p> -->
+    </footer>
+  </body>
+</html>

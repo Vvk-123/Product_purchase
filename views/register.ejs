@@ -1,0 +1,43 @@
+<%- include('layout') %>
+
+
+
+<form action="/api/auth/register" method="POST">
+  <h1>Register</h1>
+
+  <!-- Username Field -->
+  <div class="input-field">
+    <!-- <label for="username">Username:</label> -->
+    <i class="fa-solid fa-user"></i>
+    <input type="text" id="username" name="name" placeholder="Enter the name" required />
+  </div>
+
+  <!-- Email Field -->
+  <div class="input-field">
+    <!-- <label for="email">Email:</label> -->
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" id="email" name="email" placeholder="Enter the email" required />
+  </div>
+
+  <!-- Password Field -->
+  <div class="input-field">
+    <!-- <label for="password">Password:</label> -->
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" id="password"  name="password" placeholder="Enter the password" required />
+  </div>
+
+  <!-- Role Field -->
+  <label for="role">Role:</label>
+  <select id="role" name="role" required>
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <!-- Use Below code only for Manually assign the role -->
+  <!-- Hidden role field -->
+  <!-- <input type="hidden" name="role" value="user" /> -->
+  <!-- <input type="hidden" name="role" value="admin" /> -->
+  <br><br>
+  <!-- Submit Button -->
+  <button type="submit" >Register</button>
+</form>

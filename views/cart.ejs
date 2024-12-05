@@ -1,0 +1,138 @@
+<%- include('layout') %>
+
+<script>
+
+          <% if (messages.success) { %>
+  alert("<%= messages.success %>");
+          <% } %>
+          <% if (messages.error) { %>
+  alert("<%= messages.error %>");
+          <% } %>
+</script>
+
+<h1 class="cart-heading">Your Cart</h1>
+
+<!-- Cart Section -->
+<div class="cart-product-list">
+  <% if (cart && cart.products.length> 0) { %>
+  
+    <% cart.products.forEach(item=> { %>
+    <div class="cart-product-item">
+        <img src="<%= item.productId.image %>" alt="<%= item.productId.name %>" />
+        <!-- <strong>Product:</strong> -->
+        <h3><%= item.productId.name %><br /></h3>
+        <strong>Quantity:</strong>
+        <p><%= item.quantity %><br /></p>
+        <strong>Price:</strong> <p>$<%= item.productId.price %></p><br />
+        <form action="/api/cart/remove" method="POST" class="rm-cart">
+          <input
+            type="hidden"
+            name="productId"
+            value="<%= item.productId._id %>"
+          />
+          <button type="submit">Remove Cart</button>
+        </form>
+      
+    </div>
+    <% }) %>
+  
+</div>
+<h2>Total: $<%= total || 0 %></h2>
+
+<!-- Clear Cart Button -->
+<form
+  action="/api/cart/clear"
+  method="POST"
+  onsubmit="return confirm('Are you sure you want to clear your cart?');"
+  class="clr-cart">
+  <button type="submit">Clear Cart</button>
+</form>
+<% } else { %>
+<p>Your cart is empty.</p>
+<% } %>
+
+<!-- Add Product Section -->
+
+<form id="addProductForm">
+  <h1>Add Product to Cart</h1>
+  <label for="productId">Product ID:</label>
+  <div class="input-field">
+    <!-- <label for="productId">Product ID:</label> -->
+    <i class="fa-solid fa-user"></i>
+    <input type="text" id="productId" required />
+  </div>
+  <label for="quantity">Quantity:</label>
+  <div class="input-field">
+    <!-- <label for="quantity">Quantity:</label> -->
+    <i class="fa-solid fa-lock"></i>
+    <input type="number" id="quantity" required min="1" />
+  </div>
+  <button type="submit">Add to Cart</button>
+</form>
+
+<script>
+  // Fetch Cart Data
+  async function getCart() {
+    const token = localStorage.getItem("authToken"); // Retrieve token
+    try {
+      const response = await fetch("/api/cart", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const cartData = await response.json();
+        console.log("Cart data:", cartData);
+      } else if (response.status === 401) {
+        alert("Session expired. Please log in again.");
+        window.location.href = "/login";
+      } else {
+        console.error("Failed to fetch cart:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching cart:", error);
+    }
+  }
+
+  // Add Product to Cart
+  async function addProductToCart(productId, quantity) {
+    const token = localStorage.getItem("authToken"); // Retrieve token
+    try {
+      const response = await fetch("/api/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ productId, quantity }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Product added to cart successfully!");
+        window.location.reload(); // Refresh the page to update the cart
+      } else {
+        alert(result.message || "Failed to add product to cart.");
+      }
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  }
+
+  // Handle Add Product Form Submission
+  document
+    .getElementById("addProductForm")
+    .addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const productId = document.getElementById("productId").value;
+      const quantity = document.getElementById("quantity").value;
+      await addProductToCart(productId, quantity);
+    });
+
+  // Load Cart on Page Load
+  document.addEventListener("DOMContentLoaded", getCart);
+</script>

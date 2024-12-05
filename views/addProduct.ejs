@@ -1,0 +1,72 @@
+<%- include('layout') %>
+
+<script>
+
+          <% if (messages.success) { %>
+  alert("<%= messages.success %>");
+          <% } %>
+          <% if (messages.error) { %>
+  alert("<%= messages.error %>");
+          <% } %>
+</script>
+
+<h1>Add Product</h1>
+
+<form action="/api/products/add" method="POST" id="productForm">
+  <div>
+    <label for="name">Product Name</label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <textarea name="description" id="description" required></textarea>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" required />
+  </div>
+  <div>
+    <label for="stock">Stock</label>
+    <input type="number" name="stock" id="stock" required />
+  </div>
+  <div>
+    <label for="image">Image URL</label>
+    <input type="text" name="image" id="image" required />
+  </div>
+  <button type="submit">Add Product</button>
+</form>
+
+<script>
+
+  // Uncomment Below code when get token from autherization Header this only work for Postman tool  not in browser
+  <!-- document.getElementById("productForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const description = document.getElementById("description").value;
+      const stock = document.getElementById("stock").value;
+      const image = document.getElementById("image").value;
+      const price = document.getElementById("price").value;
+
+      // Get token from localStorage
+      const token = localStorage.getItem('authToken');
+
+      // Send the fetch request to add product
+      const response = await fetch('/api/products/add', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,  // Include token in Authorization header
+          },
+          body: JSON.stringify({ name: name, price: price,description:description,stock:stock,image:image })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+          alert('Product added successfully');
+      } else {
+          alert(data.message || 'Error adding product');
+      }
+  }); -->
+</script>

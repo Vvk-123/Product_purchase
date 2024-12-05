@@ -1,0 +1,559 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.6;
+    background-image: linear-gradient(rgba(0, 0, 50, 0.8), rgba(78, 74, 800, 0.8)), url('/geny2.jpg');
+    background-size: cover;
+        /* Ensures the image covers the entire background */
+        background-repeat: no-repeat;
+        /* Prevents tiling of the image */
+        background-position: center;
+        /* Centers the image */
+        background-attachment: fixed;
+        /* Keeps the image fixed in place */
+}
+
+/* Layout Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer */
+/* footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+} */
+
+/* Product List */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 122px;
+    margin-bottom: 20px;
+    background-color: yellow;
+    max-height: 800px;
+    /* Adjust height as needed */
+        overflow-y: auto;
+        /* Adds vertical scrolling */
+            border: 1px solid #ddd;
+            /* Optional: to visually separate the list */
+                padding: 10px;
+                scroll-behavior: smooth;
+                
+}
+
+.product-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.product-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+    
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 225px;
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.product-item:hover {
+    transform: scale(1.1);
+    /* Enlarges the item */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adds a subtle shadow */
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    margin: 5px 0;
+    color: #666;
+
+}
+
+.product-item button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+.product-item button:hover {
+    background-color: #555;
+
+}
+
+/* Cart List */
+.cart-product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 122px;
+    margin-bottom: 20px;
+    background-color: yellow;
+    max-height: 800px;
+    /* Adjust height as needed */
+    overflow-y: auto;
+    /* Adds vertical scrolling */
+    border: 1px solid #ddd;
+    /* Optional: to visually separate the list */
+    padding: 10px;
+    scroll-behavior: smooth;
+}
+
+.cart-product-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cart-product-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.cart-product-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+
+.cart-product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 225px;
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.cart-product-item:hover {
+    transform: scale(1.1);
+    /* Enlarges the item */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adds a subtle shadow */
+}
+
+.cart-product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.cart-product-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cart-product-item p {
+    margin: 5px 0;
+    color: #666;
+
+}
+
+.cart-product-item button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+.cart-product-item button:hover {
+    background-color: #555;
+
+}
+
+.title h1,
+h2 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+/* Cart */
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+
+h1,
+h3 {
+    color: #333;
+    text-align: center;
+}
+
+
+
+/* Form Styles */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    max-width: 500px;
+    /* margin: 20px auto; */
+    margin-top: 5%;
+    margin-left: 15%;
+    background-position: center;
+        background-size: cover;
+        position: relative;
+        border: groove;
+        /*my logic*/
+        /* border-color: mediumspringgreen; */
+        /*my logic*/
+        border: dotted;
+} 
+
+form div {
+    margin-bottom: 15px;
+}
+
+/* form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+} */
+
+/* form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}  */
+
+form button {
+    background-color: #333;
+    color: #fff;
+    /* border: none; */
+    /* padding: 10px 20px; */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    display: block;
+        margin: auto;
+        padding: 10px 80px;
+        border: dotted;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+   
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Cart Page */
+.cart-list {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+.cart-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.cart-list strong {
+    color: #333;
+}
+
+.cart-list button {
+    background-color: #c00;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.cart-list button:hover {
+    background-color: #a00;
+}
+
+/* Success/Error messages */
+.success,
+.error {
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 600px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+/* Media Queries for Responsive Design product*/
+@media (max-width: 768px) {
+    .product-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-item {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    header nav {
+        flex-direction: column;
+    }
+}
+
+/* Media Queries for Responsive Design cart*/
+@media (max-width: 768px) {
+    .cart-product-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-product-item {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    header nav {
+        flex-direction: column;
+    }
+}
+
+
+
+.alert {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.alert-success {
+    color: green;
+    border: 1px solid green;
+}
+
+.alert-danger {
+    color: red;
+    border: 1px solid red;
+}
+
+
+/* my logic  below will insert soon*/
+
+/* Login form */
+/* .form-login-container{
+    width: 100%;
+        height: 100vh;
+        background-position: center;
+        background-size: cover; 
+        position: relative;
+        border: groove;
+        /*my logic*/
+        /* border-color: mediumspringgreen; */
+        /*my logic*/
+        border: dotted;
+} */
+
+
+.form-login-box{
+    width: 90%;
+        max-width: 450px;
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 50px 60px 70px;
+        text-align: center;
+        border: dotted;
+        /*my logic*/
+        border-color: blue;
+        /*my logic*/
+}
+
+.input-field {
+    background-color: gold;
+    color: black;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    border: black;
+
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+
+}
+
+.input-field i {
+    margin-left: 10px;
+}
+
+
+/* button {
+    display: block;
+    margin: 0 auto;
+    padding: 30px 40px;
+    border: dotted;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+} */
+
+/* button:hover {
+    transform: scale(1.1);
+    /* Enlarges the item */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adds a subtle shadow */
+} */
+
+
+
+
+/* clear cart border on cart tab */
+
+
+
+
+/* .show-cart{
+    border:black dotted;
+    border-radius: 10px;
+    background-color: orangered;
+} */
+
+.cart-heading{
+    color:whitesmoke;
+}
+
+#addProductForm {
+    margin: 30px auto;
+}
+
+.clr-cart{
+    margin: 30px auto;
+}
+
+
+/* remove cart on cart tab*/
+.rm-cart {
+    border: none;
+    margin: auto;
+}
+
+.add_Product_admin{
+    color: white;
+}
+
+
+.add_cart_index{
+
+    margin: auto;
+}
+
